@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>JavaScript Challenges</title>
+  </head>
+  <script>
+    function toggleEmail(){
+      var display=document.getElementById('emailto').style.display;
+      if(display=="none")
+      document.getElementById('emailto').style.display='block';
+      else
+      document.getElementById('emailto').style.display='none';
+    }
+    function setHomeAddress(){
+      var postal=document.getElementById('postaladdress').value;
+      if(document.getElementById('homepostalcheck').checked){
+        document.getElementById('homeaddress').value=postal;
+      document.getElementById('homeaddress').disabled=true;
+      }else
+      document.getElementById('homeaddress').disabled=false;
+    }
+    function radioButtons(){
+      var radios = document.getElementsByName("favteam");
+    for (var i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+            alert("Escolheu: " + radios[i].value);
+            i=radios.length;
+        }
+    }
+    }
+    function checkForm(){
+var regExp=/^.+@.*\..{2,}$/;
+      if(document.getElementById('fullname').value=='')
+      document.getElementById('nameerrormsg').style.display='block';
+      if(document.getElementById('streetaddr').value=='')
+      document.getElementById('addrerrormsg').style.display='block';
+      if(!regExp.test(document.getElementById('emailaddr').value))
+      document.getElementById('emailerrormsg').style.display='block';
+    }
+  </script>
+  <body>
+    <form action="">
+      <fieldset>
+
+        <legend>Email subscriptions</legend>
+
+        <p id="Ross">
+          <label>
+            <input type="checkbox" name="subscribe" id="subscribe" onclick="toggleEmail()">
+            Yes! I would like to receive emails!
+          </label>
+        </p>
+
+        <p id="emailto" style="display:none">
+          <label>
+            Email Address: 
+            <input type="text" name="email" id="email">
+          </label>
+        </p>
+
+      </fieldset>
+      <fieldset>
+        <legend>Billing Information</legend>
+        <p>
+          <label>
+            Postal Address:<br>
+          <input name="postaladdress" id="postaladdress"></input>
+          </label>
+        </p>
+        <p>
+          Home Address:<br>
+          <label>
+             <input type="checkbox" name="homepostalcheck" id="homepostalcheck" onclick="setHomeAddress()">
+             Same as above
+          </label>
+          <br>
+          <input name="homeaddress" id="homeaddress"></input>
+        </p>
+      </fieldset>
+      <form action="mailto:me@anyemail.com">
+        <fieldset>
+          <legend>Radio buttons</legend>
+          <p>
+            What's your favourite team?: 
+            <label>
+              <input type="radio" value="sp" name="favteam" id="optTeam">
+              São Paulo
+            </label>
+            <label>
+              <input type="radio" value="corinthians" name="favteam" id="optTeam">
+              Corinthians
+            </label>
+            <label>
+              <input type="radio" value="palmeira" name="favteam" id="optTeam">
+              Palmeiras
+            </label>
+          </p>
+        </fieldset>
+      
+        <input type="submit" value="Check it out!" onclick="radioButtons()">
+      </form>
+      <fieldset>
+
+        <legend>Personal details</legend>
+        <p>
+          <label>
+            Full name:
+            <input type="text" name="fullname" id="fullname">
+          </label>
+        </p>
+        <p class="errormsg" id="nameerrormsg" style="display:none;color:red">Please enter your name above</p>
+
+        <p>
+          <label>
+            Street Address:
+            <input type="text" name="streetaddr" id="streetaddr">
+          </label>
+        </p>
+        <p class="errormsg" id="addrerrormsg" style="display:none;color:red">Please enter your street address</p>
+        <p>
+          <label>
+            Email Address:
+            <input type="text" name="emailaddr" id="emailaddr">
+          </label>
+        </p>
+        <p class="errormsg" id="emailerrormsg" style="display:none;color:red">Please enter a valid email</p>
+      </fieldset>
+      <input type="submit" value="Submit it!" onclick="checkForm()"> 
+    </form>
+  </body>
+</html>
